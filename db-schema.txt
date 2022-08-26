@@ -1,0 +1,21 @@
+--- posts
+- id
+- body/text
+- userd_id
+
+--- reactions
+- markable(morph)
+- userd_id
+- value
+- metadata
+
+--- users
+
+--- comments
+- commentable(morph)
+- body/text
+
+--- photo
+- path
+- photoable(morph)
+

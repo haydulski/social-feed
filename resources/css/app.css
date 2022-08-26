@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.emoji-list {
+    opacity: 0;
+    max-height: 0;
+    transition: opacity .2s;
+}
+
+.emoji-container:hover .emoji-list {
+    opacity: 1;
+    max-height: 500px;
+    transition: opacity .2s;
+}
+
+.likes-container .likes-panel {
+    opacity: 0;
+    top: 100px;
+    touch-action: none;
+}
+
+.likes-container:hover .likes-panel {
+    opacity: 1;
+    top: -30px;
+    touch-action: auto;
+}
