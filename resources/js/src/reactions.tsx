@@ -23,7 +23,6 @@ const ReactionsPanel: React.FC<Props> = ({ reactions }) => {
             }
         })
         setTypes(newTypes);
-        console.log(newTypes);
     }, [reactions])
 
     return (
