@@ -64,7 +64,7 @@ class PostsApi extends TestCase
                 $json->has(
                     'reactions',
                     fn ($json) =>
-                    $json->first(fn ($js) => $js->hasAll(['value', 'user']))
+                    $json->first(fn ($js) => $js->hasAll(['value', 'user']))->etc()
                 )->etc()
             )
         );

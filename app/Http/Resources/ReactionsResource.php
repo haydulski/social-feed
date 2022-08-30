@@ -13,7 +13,7 @@ class ReactionsResource extends JsonResource
 
         return [
             'value' => $this->value,
-            'user' => $user->name,
+            'user' => $user->name || 'not found',
         ];
     }
 }
