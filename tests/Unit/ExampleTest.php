@@ -2,6 +2,7 @@
 
 namespace Tests\Unit;
 
+use App\Http\Controllers\PostController;
 use PHPUnit\Framework\TestCase;
 
 class ExampleTest extends TestCase
