@@ -18,7 +18,7 @@ class PostController extends Controller
             'photos',
             'users',
             'reactions',
-        ])->get();
+        ])->take(10)->get();
 
         return response()->json(PostResource::collection($posts));
     }
@@ -26,11 +26,11 @@ class PostController extends Controller
     public function addReaction(string $type, int $id): JsonResponse
     {
         $cleanType = filter_var($type, FILTER_SANITIZE_SPECIAL_CHARS);
-        if (!in_array($id, [6, 7, 8]) || !in_array($cleanType, ['like', 'wow', 'love', 'haha'])) {
+        if (!is_int($id) || !in_array($cleanType, ['like', 'wow', 'love', 'haha'])) {
             return response()->json('wrong reaction or post id', 500);
         }
         $post = Post::find($id);
-        $user = User::find(3);
+        $user = User::find(4);
 
         $reactions = $user->reactions;
 

@@ -12,7 +12,7 @@ class PostsApi extends TestCase
         $response = $this->get('/api/posts');
         $response->assertJson(
             fn (AssertableJson $json) =>
-            $json->has(3)
+            $json->has(10)
                 ->first(
                     fn ($json) =>
                     $json->hasAll(['id', 'body', 'users', 'comments', 'reactions', 'photos', 'created_at'])
@@ -32,7 +32,7 @@ class PostsApi extends TestCase
                     'users',
                     fn ($json) =>
                     $json->hasAll(['id', 'created_at', 'updated_at', 'photos', 'name', 'email'])
-                        ->where('email', 'sconn@yahoo.com')
+                        ->where('email', 'octavia.jones@example.org')
                 )->etc()
             )
         );
@@ -99,7 +99,7 @@ class PostsApi extends TestCase
             $json->has(
                 '1.users',
                 fn ($js) =>
-                $js->where('id', 5)
+                $js->where('id', 7)
                     ->etc()
             )
         );

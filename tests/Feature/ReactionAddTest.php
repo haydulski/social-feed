@@ -17,16 +17,15 @@ class ReactionPostTest extends TestCase
 
     public function test_reaction_add_wrong_data()
     {
-        $response = $this->get('/api/reaction/wow/4');
-
+        $response = $this->get('/api/reaction/wow/12a');
         $response->assertStatus(500);
     }
 
     public function test_reaction_add_wrong_type()
     {
-        $response = $this->get('/api/reaction/wow/love');
+        $response = $this->get('/api/reaction/lovvee/8');
 
-        $response->assertStatus(500);
+        $response->assertSeeText("wrong reaction or post id");
     }
 
     public function test_reaction_add_good_data()

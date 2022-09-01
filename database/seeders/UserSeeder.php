@@ -18,12 +18,6 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Factory::create();
-
-        User::factory(4)->create([
-            'name' => $faker->name,
-            'email' => $faker->unique()->email,
-            'password' => Hash::make('123qwe'),
-        ]);
+        User::factory(4)->create();
     }
 }
