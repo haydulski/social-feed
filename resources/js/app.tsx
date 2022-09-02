@@ -1,7 +1,7 @@
 import React from 'react';
 import '../css/App.css'
 import { createRoot } from 'react-dom/client';
-import Posts from './src/posts'
+import Posts from './src/Posts'
 
 
 const App: React.FC = () => {

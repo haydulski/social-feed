@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Reaction, EmptyTypes } from './types/Types';
+import { Reaction, EmptyTypes } from './types/types';
 import { emptyTypes } from './misc/emptyTypes';
 
 interface Props {

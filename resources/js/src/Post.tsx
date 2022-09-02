@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import Comments from './comments';
 import Comment from './svgs/comment';
 import LikeSvg from './svgs/like';
-import { PostProps } from './types/Types';
-import ReactionsPanel from './reactions';
+import { PostProps } from './types/types';
+import ReactionsPanel from './Reactions';
 
 import Like from './imgs/like.png';
 import Wow from './imgs/wow.png';

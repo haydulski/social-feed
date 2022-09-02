@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import Post from './post'
-import axios from 'axios'
+import React, { useEffect, useState } from 'react';
+import Post from './Post';
+import axios from 'axios';
+import SearchBar from './SearchBar';
 
 const Posts: React.FC = () => {
 
@@ -18,8 +19,22 @@ const Posts: React.FC = () => {
 
     }, [])
 
+    const getSearchedPosts = async (author: string, posts: string) => {
+        try {
+            const response = await axios.get('/api/posts' + `?author=${author}&posts=${posts}`);
+            setPosts(response.data);
+        } catch (error) {
+            console.log(error.message)
+        }
+    }
+
+    const searchQuery = (data: string[]) => {
+        getSearchedPosts(data[0], data[1]);
+    }
+
     return posts ? (
         <>
+            <SearchBar query={searchQuery} />
             {posts.map(post => (
                 <div key={post.id}>
                     <Post postData={post} />
@@ -28,6 +43,7 @@ const Posts: React.FC = () => {
         </>
     ) : (
         <div>
+
             <div className='w-full rounded-md bg-gray-700 text-white px-4 py-4 my-8 min-h-[500px]'></div>
         </div>
     )

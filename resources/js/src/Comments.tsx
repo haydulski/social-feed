@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Comments as Props } from './types/Types';
-import { guestCommentSchema } from './guestCommSchema';
+import { Comments as Props } from './types/types';
+import { guestCommentSchema } from './misc/guestCommSchema';
 
 const Comments: React.FC<Props> = ({ data }) => {
 

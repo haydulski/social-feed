@@ -1,4 +1,4 @@
-import { Comment } from "./types/Types"
+import { Comment } from "../types/types"
 
 export const guestCommentSchema = (added: number, post_id: number, comment: string): Comment => {
 
