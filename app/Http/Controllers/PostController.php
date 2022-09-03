@@ -7,18 +7,23 @@ use App\Http\Resources\ReactionsResource;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Maize\Markable\Models\Reaction;
 
 class PostController extends Controller
 {
-    public function index(): JsonResponse
+    public function index(Request $req): JsonResponse
     {
-        $posts = Post::with([
+        $body = (string) $req->input('posts');
+
+        $posts = Post::when($body, function ($query, $body) {
+            $query->where('body', 'like', $body . '%');
+        })->with([
             'comments' => ['user', 'user.photos'],
             'photos',
             'users',
             'reactions',
-        ])->take(10)->get();
+        ])->take(20)->get();
 
         return response()->json(PostResource::collection($posts));
     }

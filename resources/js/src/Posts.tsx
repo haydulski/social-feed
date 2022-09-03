@@ -6,6 +6,7 @@ import SearchBar from './SearchBar';
 const Posts: React.FC = () => {
 
     const [posts, setPosts] = useState<any>();
+
     const getPosts = async () => {
         try {
             const response = await axios.get('/api/posts');
@@ -16,12 +17,11 @@ const Posts: React.FC = () => {
     }
     useEffect(() => {
         getPosts()
-
     }, [])
 
-    const getSearchedPosts = async (author: string, posts: string) => {
+    const getSearchedPosts = async (posts: string) => {
         try {
-            const response = await axios.get('/api/posts' + `?author=${author}&posts=${posts}`);
+            const response = await axios.get('/api/posts' + `?posts=${posts}`);
             setPosts(response.data);
         } catch (error) {
             console.log(error.message)
@@ -29,7 +29,7 @@ const Posts: React.FC = () => {
     }
 
     const searchQuery = (data: string[]) => {
-        getSearchedPosts(data[0], data[1]);
+        getSearchedPosts(data[0]);
     }
 
     return posts ? (
@@ -43,7 +43,6 @@ const Posts: React.FC = () => {
         </>
     ) : (
         <div>
-
             <div className='w-full rounded-md bg-gray-700 text-white px-4 py-4 my-8 min-h-[500px]'></div>
         </div>
     )
