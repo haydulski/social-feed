@@ -14,7 +14,7 @@ class PostController extends Controller
 {
     public function index(Request $req): JsonResponse
     {
-        $body = (string) $req->input('posts');
+        $body = (string) filter_var($req->input('posts'), FILTER_SANITIZE_SPECIAL_CHARS);
 
         $posts = Post::when($body, function ($query, $body) {
             $query->where('body', 'like', $body . '%');
